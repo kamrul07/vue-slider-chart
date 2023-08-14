@@ -1,6 +1,6 @@
 <script setup >
 
-import { ref , onMounted , nextTick } from 'vue'
+import { ref , onMounted , onBeforeUnmount, nextTick } from 'vue'
 
 const items = ref([
   'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1467&q=80',
@@ -33,16 +33,16 @@ function addNewItem(){
 
 </script>
 
-<template>
-    {{ items }}
-  <div class="my-10">
+<template class="mb-100">
+
+  <div class="my-10 mb-50">
     <input type="text" v-model="newItem">
     <button @click="addNewItem()" class="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
       Button
     </button>
 
   </div>
-  <div class="mx-auto items" id="carousel">
+  <div class="mx-auto items " id="carousel">
     <div :style="`background-image:url( ${item} )`" :data-img=" item " class=" item" v-for="item, index in items" :key="item">{{ index + 1 }}</div>
   </div>
 </template>
